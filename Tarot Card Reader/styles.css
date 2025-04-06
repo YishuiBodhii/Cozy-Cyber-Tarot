@@ -1,0 +1,151 @@
+/* Main cozy theme */
+body {
+    font-family: 'Short Stack', cursive;
+    background: #ffdbdb;
+    color: #5a3e36;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(#ffc8c8 2px, transparent 2px);
+    background-size: 40px 40px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    background: #ff9a76;
+    color: white !important;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(255,154,118,0.3);
+}
+
+.nav a:hover {
+    background: #ff8a6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,154,118,0.4);
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 8px 25px rgba(255,184,166,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+button {
+    background: linear-gradient(145deg, #ff9a76, #ff8a6b);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255,154,118,0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(255,154,118,0.6);
+    background: linear-gradient(145deg, #ff8a6b, #ff9a76);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+button:hover::after {
+    left: 100%;
+}
+
+.card-image {
+    font-size: 100px;
+    margin: 20px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.card:hover .card-image {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 5px 10px rgba(255,154,118,0.3));
+}
+
+.card {
+    transition: all 0.4s ease;
+    transform-origin: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255,184,166,0.25);
+}
+
+/* Remove card animations */
+.card {
+    /* Remove the gentle-pulse animation */
+    animation: none;
+    transform: none !important;
+}
+
+/* Emoji levitation */
+.card-image {
+    font-size: 100px;
+    margin: 20px;
+    display: inline-block;
+    animation: levitate 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes levitate {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* Keep the button animations if you want */
+button {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}

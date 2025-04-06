@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Cyber Tarot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Restore original home page styles */
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0px rgba(255,107,107,0.2);
+        }
+        
+        button {
+            background: #ff9a76;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255,154,118,0.4);
+        }
+        
+        .card {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="steam"></div>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="archive.html">Archive</a>
+        </nav>
+        
+        <h1>Cozy Cyber Tarot</h1>
+        <p class="subtitle">Your daily dose of digital destiny ✨</p>
+        
+        <button id="drawButton">Brew My Fortune</button>
+        
+        <div id="cardDisplay" class="card">
+            <div class="card-image" id="cardSymbol">🍵</div>
+            <h2 class="card-name" id="cardName">The Steamy Oracle</h2>
+            <p class="card-meaning" id="cardMeaning">Click above to reveal your fate</p>
+        </div>
+    </div>
+
+    <audio id="soundEffect" src="https://assets.mixkit.co/sfx/preview/mixkit-soft-sci-fi-alarm-908.mp3"></audio>
+
+    <script>
+        const cozyTarot = [
+            // Original fortunes
+            { name: "The WiFi Wizard", meaning: "Your router will betray you during an important Zoom call. The universe suggests sacrificing a cookie to the bandwidth gods.", symbol: "📶" },
+            { name: "The Buffering Bard", meaning: "Your life is loading... please wait. Tip: Try turning it off and on again.", symbol: "🌀" },
+            { name: "The Glitchy Cat", meaning: "A feline overlord will walk across your keyboard today, sending cryptic messages to your boss.", symbol: "🐱‍💻" },
+            { name: "The Error 404", meaning: "Your hopes and dreams cannot be found at this time. Try again later or clear your cookies.", symbol: "❓" },
+            { name: "The Infinite Scroll", meaning: "You'll fall into a TikTok void for 3 hours. The algorithm knows you better than you know yourself.", symbol: "📜" },
+            { name: "The Blue Screen", meaning: "Everything's about to crash. Save your work and pray to the IT department.", symbol: "💙" },
+            { name: "The Password Paradox", meaning: "You'll remember every password except the one you need right now. Hint: It's not 'password123'.", symbol: "🔑" },
+            { name: "The Cookie Monster", meaning: "Your browser cookies are judging your life choices. They've seen everything.", symbol: "🍪" },
+            
+            // New fortunes
+            { name: "The Laggy Oracle", meaning: "Your future is buffering... come back in 5-7 business days.", symbol: "⏳" },
+            { name: "The Spam Prophet", meaning: "You'll receive an email from a Nigerian prince today. He's legit this time.", symbol: "✉️" },
+            { name: "The Cloud Seer", meaning: "Your iCloud storage is full of memes from 2016. The spirits demand a cleanup.", symbol: "☁️" },
+            { name: "The Battery Shaman", meaning: "Your phone will die at the worst possible moment. Carry a charger or accept fate.", symbol: "🔋" },
+            { name: "The Autocorrect Mage", meaning: "Your texts will embarrass you today. Double-check before sending.", symbol: "✏️" },
+            { name: "The Notification Necromancer", meaning: "That group chat you muted 3 years ago will suddenly revive today.", symbol: "💀" },
+            { name: "The Algorithm Alchemist", meaning: "YouTube will recommend exactly what you need to see today... from 2013.", symbol: "🧪" },
+            { name: "The Cache Clairvoyant", meaning: "You'll accidentally open an incognito tab in public. The spirits are laughing.", symbol: "👀" }
+        ];
+
+        document.getElementById('drawButton').addEventListener('click', () => {
+            const cardDisplay = document.getElementById('cardDisplay');
+            const soundEffect = document.getElementById('soundEffect');
+            
+            cardDisplay.classList.remove('show');
+            soundEffect.volume = 0.3;
+            soundEffect.play();
+            
+            setTimeout(() => {
+                const randomCard = cozyTarot[Math.floor(Math.random() * cozyTarot.length)];
+                
+                document.getElementById('cardName').textContent = randomCard.name;
+                document.getElementById('cardMeaning').textContent = randomCard.meaning;
+                document.getElementById('cardSymbol').textContent = randomCard.symbol;
+                
+                cardDisplay.classList.add('show');
+            }, 300);
+        });
+
+        setTimeout(() => {
+            document.getElementById('cardDisplay').classList.add('show');
+        }, 500);
+    </script>
+</body>
+</html>

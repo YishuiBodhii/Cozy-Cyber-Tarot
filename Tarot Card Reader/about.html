@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Cozy Tarot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        .feature-icon {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="archive.html">Archive</a>
+        </nav>
+        
+        <div class="card">
+            <h1>About This Cozy Space</h1>
+            
+            <div class="about-content">
+                <div class="feature">
+                    <span class="feature-icon">☕</span>
+                    <p>Freshly brewed fortunes, no weird vibes</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">🐱</span>
+                    <p>Cat-approved predictions (mostly about when they'll knock things over)</p>
+                </div>
+                
+                <button onclick="location.href='index.html'">
+                    Get Your Fortune
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

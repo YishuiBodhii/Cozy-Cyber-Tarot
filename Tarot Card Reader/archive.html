@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .saved-fortune {
+            background: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .saved-fortune h3 {
+            color: #ff6b6b;
+            margin-top: 0;
+        }
+        .saved-date {
+            font-size: 0.8rem;
+            color: #a38f84;
+        }
+    </style>
+</head>
+<body>
+    <div class="steam"></div>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="archive.html">Archive</a>
+        </nav>
+        
+        <h1>Your Fortune Archive</h1>
+        
+        <div class="card">
+            <div id="savedFortunes">
+                <!-- Fortunes will appear here -->
+            </div>
+            
+            <button onclick="clearArchive()" style="margin-top: 20px; background: #ff6b6b;">
+                Clear Archive
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Load saved fortunes
+        function loadFortunes() {
+            const saved = JSON.parse(localStorage.getItem('savedFortunes')) || [];
+            const container = document.getElementById('savedFortunes');
+            
+            if(saved.length === 0) {
+                container.innerHTML = `
+                    <div class="card-image">📭</div>
+                    <p>No saved fortunes yet. Go brew some!</p>
+                `;
+                return;
+            }
+            
+            container.innerHTML = saved.map(fortune => `
+                <div class="saved-fortune">
+                    <h3>${fortune.name}</h3>
+                    <p>${fortune.meaning}</p>
+                    <p class="saved-date">${new Date(fortune.date).toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+        
+        function clearArchive() {
+            localStorage.removeItem('savedFortunes');
+            loadFortunes();
+        }
+        
+        loadFortunes();
+    </script>
+</body>
+</html>
